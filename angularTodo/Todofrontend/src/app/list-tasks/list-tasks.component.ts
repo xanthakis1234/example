@@ -43,4 +43,14 @@ export class ListTasksComponent implements OnInit{
     );
   }
 
+  deleteTask(id){
+    this.todoService.deleteTask(id).subscribe(
+      response =>{
+        this.fetchTasks();
+      }
+
+
+    );
+  }
+
 }

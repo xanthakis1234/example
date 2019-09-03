@@ -5,13 +5,15 @@
       <th>Task Description</th>
       <th>Completed</th>
       <th>Date</th>
+      <th>Actions</th>
         </thead> 
     <tbody>
       <tr *ngFor="let task of tasks">
         <td>{{task.id}}</td>
         <td>{{task.description}}</td>   
         <td>{{task.isDone}}</td>   
-        <td>{{task.date | date}}</td>   
+        <td>{{task.date | date}}</td> 
+        <td><button (click)="deleteTask(task.id)" class ="btn btn-warning">Delete Task</button></td>  
       </tr>
     </tbody>
   </table>
