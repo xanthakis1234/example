@@ -9,7 +9,7 @@ public class Todo {
 	private boolean isDone;
 	private Date date;
 	
-	public Todo(long id, String description, boolean isDone, Date date) {
+	public Todo(long id, String description, Date date, boolean isDone) {
 		this.id = id;
 		this.description = description;
 		this.isDone = isDone;
