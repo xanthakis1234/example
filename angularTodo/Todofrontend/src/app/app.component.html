@@ -5,32 +5,11 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="text-danger text-center">{{ title }}!</h1>
-    <hr />
+  <app-header></app-header>
+  
+  <router-outlet></router-outlet>
 
-    
-
-
-    <div *ngIf="myresponse">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <th>Task Id</th>
-          <th>Task Description</th>
-          <th>Completed</th>
-          <th>Date</th>
-            </thead>
-        <tbody>
-          <tr *ngFor="let todo of myresponse">
-            <td>{{todo.id}}</td>
-            <td>{{todo.description}}</td>   
-            <td>{{todo.isDone}}</td>   
-            <td>{{todo.date | date}}</td>             
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <app-footer></app-footer>
 </body>
 
 </html>
