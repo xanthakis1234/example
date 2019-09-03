@@ -22,8 +22,34 @@ public class TodoRestController {
 		return "ALOXA";
 	}
 
-	@GetMapping(path="todo/getall")
+	@GetMapping(path="todo/getTasks")
 	public List<Task> getTasks() {
-		return service.getAll();
+		return service.getTasks();
 	}
+	
+	@GetMapping(path="todo/getTaskIndex")
+	public int getTaskIndex(int indexOfTask) {
+		return service.getTaskIndex(indexOfTask);
+	}
+	
+	@GetMapping(path="todo/createTask")
+	public void createTask(Task task) {
+		service.createTask(task);
+	}
+	
+	
+	@GetMapping(path="todo/updateTask")
+	public void updateTask(int indexOfTask,Task task) {		
+		service.updateTask(indexOfTask, task);
+	}
+	
+	@GetMapping(path="todo/deleteTask")
+	public void deleteTask(Task task) {
+		service.deleteTask(task);
+	}
+	
+	
+	
+	
+	
 }
