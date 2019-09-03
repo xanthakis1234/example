@@ -15,6 +15,6 @@ export class TodoDataService {
   readonly APP_URL = 'http://localhost:8080';
   // Method to fetch all employees from the database table.
   printTasks() {
-    return this.http.get<Task[]>(this.APP_URL + '/todo/getall');
+    return this.http.get<Task[]>(this.APP_URL + '/todo/getTasks');
   }
 }
