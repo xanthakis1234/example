@@ -1,0 +1,19 @@
+<div class="container" *ngIf="tasks">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <th>Task Id</th>
+      <th>Task Description</th>
+      <th>Completed</th>
+      <th>Date</th>
+        </thead> 
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.id}}</td>
+        <td>{{task.description}}</td>   
+        <td>{{task.isDone}}</td>   
+        <td>{{task.date | date}}</td>   
+      </tr>
+    </tbody>
+  </table>
+</div>
+
