@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.model.Task;
@@ -43,9 +47,10 @@ public class TodoRestController {
 		service.updateTask(indexOfTask, task);
 	}
 	
-	@GetMapping(path="todo/deleteTask")
-	public void deleteTask(Task task) {
-		service.deleteTask(task);
+	@PutMapping("todo/deleteTask/{id}")
+	//@RequestMapping(value = "todo/deleteTask/{id}",method=RequestMethod.DELETE)
+	public void deleteTask(@PathVariable int id) {
+		service.deleteTask(id);
 	}
 	
 	
