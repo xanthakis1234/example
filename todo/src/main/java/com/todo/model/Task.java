@@ -2,14 +2,14 @@ package com.todo.model;
 
 import java.util.Date;
 
-public class Todo {
+public class Task {
 	
 	private long id;
 	private String description;
 	private boolean isDone;
 	private Date date;
 	
-	public Todo(long id, String description, Date date, boolean isDone) {
+	public Task(long id, String description, Date date, boolean isDone) {
 		this.id = id;
 		this.description = description;
 		this.isDone = isDone;

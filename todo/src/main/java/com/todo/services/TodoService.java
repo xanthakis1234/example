@@ -6,21 +6,21 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.todo.model.Todo;
+import com.todo.model.Task;
 
 @Service
 public class TodoService {
 
-	private static List<Todo> todos = new ArrayList();
+	private static List<Task> todos = new ArrayList();
 	private static int id = 0;
 	
 	static {
-		todos.add(new Todo(++id, "Learn Guitar", new Date(), false));
-		todos.add(new Todo(++id,  "Learn Angular", new Date(), false));
-		todos.add(new Todo(++id,  "Learn Spring", new Date(), false));
+		todos.add(new Task(++id, "Learn Guitar", new Date(), false));
+		todos.add(new Task(++id,  "Learn Angular", new Date(), false));
+		todos.add(new Task(++id,  "Learn Spring", new Date(), false));
 	}
 	
-	public List<Todo> getAll() {
+	public List<Task> getAll() {
 		return todos;
 	}
 
