@@ -24,7 +24,7 @@ export class TodoDataService {
   }
 
   deleteTask(id){
-    return this.http.delete(`http://localhost:8080/todo/deletsk/${id}`)eTa
+    return this.http.delete(`http://localhost:8080/todo/deleteTask/${id}`);
   }
 
 }
