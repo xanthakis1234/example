@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/todo-data.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 export class Task{
-  constructor(
-    public id: number,
-    public description: string,
-    public isDone: boolean,
-    public date: Date
-  ){}
-
+  public id: number;
+  public description: string;
+  public isDone: boolean;
+  public date: Date;
+ 
 }
 
 
@@ -24,7 +23,8 @@ export class ListTasksComponent implements OnInit{
   
   constructor( 
     private todoService:TodoDataService,
-    private http:HttpClient
+    private http:HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -39,8 +39,13 @@ export class ListTasksComponent implements OnInit{
       error => {
         console.log('Error occured', error);
       }
-
     );
   }
+
+  createTaskPage(){
+    this.router.navigate(['/add']);
+
+  }
+
 
 }

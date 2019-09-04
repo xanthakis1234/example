@@ -1,4 +1,8 @@
+
 <div class="container" *ngIf="tasks">
+    <div id="createbtn">
+        <button type="button" class="btn btn-outline-success" (click)="createTaskPage();">New Task</button>
+      </div>
   <table class="table table-bordered table-hover">
     <thead>
       <th>Task Id</th>
