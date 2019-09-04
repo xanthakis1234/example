@@ -7,8 +7,7 @@ export class Task{
   public id: number;
   public description: string;
   public isDone: boolean;
-  public date: Date;
- 
+  public date: Date; 
 }
 
 @Component({
@@ -51,8 +50,6 @@ export class ListTasksComponent implements OnInit{
       response =>{
         this.fetchTasks();
       }
-
-
     );
   }
 }

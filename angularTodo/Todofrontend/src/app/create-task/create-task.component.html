@@ -2,11 +2,15 @@
 <div [hidden]="submitted" style="width: 400px;">
     <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="task">Task Name</label>
+        <label for="Id">Task Id</label>
+            <input type="int" class="form-control" id="Id" required [(ngModel)]="task.id"  name="Id">
+        <label for="task">Task Name</label>
             <input type="text" class="form-control" id="description" required [(ngModel)]="task.description"  name="description">
-        </div>
-
-       
+        <label for="isDone">Task state</label>
+            <input type="checkbox" class="form-control" id="isDone" required [(ngModel)]="task.isDone"  name="isDone">
+        <label for="isDone">Task date</label>
+            <input type="date" class="form-control" id="date" required [(ngModel)]="task.date"  name="date">
+        </div>       
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 </div>

@@ -4,23 +4,28 @@ import java.util.Date;
 
 public class Task {
 	
-	private long id;
+	private int id;
 	private String description;
 	private boolean isDone;
 	private Date date;
 	
-	public Task(long id, String description, Date date, boolean isDone) {
+	
+	
+	public Task() {		
+	}
+
+	public Task(int id, String description, Date date, boolean isDone) {
 		this.id = id;
 		this.description = description;
 		this.isDone = isDone;
 		this.date = date;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
