@@ -3,6 +3,7 @@ package com.todo.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.todo.model.Task;
 import com.todo.services.TodoService;
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200", maxAge = 3600)
 @RestController
 public class TodoRestController {
 	
@@ -45,8 +46,7 @@ public class TodoRestController {
 		service.updateTask(indexOfTask, task);
 	}
 	
-	@PutMapping("todo/deleteTask/{id}")
-	//@RequestMapping(value = "todo/deleteTask/{id}",method=RequestMethod.DELETE)
+	@DeleteMapping("todo/deleteTask/{id}")
 	public void deleteTask(@PathVariable int id) {
 		service.deleteTask(id);
 	}	
