@@ -17,9 +17,14 @@ export class TodoDataService {
   printTasks() {
     return this.http.get<Task[]>(this.APP_URL + '/todo/getTasks');
   }
+
  
    createTask(task: Object): Observable<Object> {
     return this.http.post(this.APP_URL + 'todo/createTask', task);
+  }
+
+  deleteTask(id){
+    return this.http.delete(`http://localhost:8080/todo/deletsk/${id}`)eTa
   }
 
 }

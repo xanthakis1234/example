@@ -36,8 +36,19 @@ public class TodoService {
 	public void updateTask(int indexOfTask, Task task) {
 		listOfTasks.set(indexOfTask, task);	
 	}
+	
+	public Task getTaskFromId(int id) {
+		for (Task task : listOfTasks) {
+			if (task.getId() == id) {
+				return task;		
+			}
+		}
+		return null;
+	}
 
-	public void deleteTask(Task task) {
+
+	public void deleteTask(int id) {
+		Task task = getTaskFromId(id);
 		listOfTasks.remove(task);		
 	}
 }
