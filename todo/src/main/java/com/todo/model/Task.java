@@ -7,11 +7,9 @@ public class Task {
 	private int id;
 	private String description;
 	private boolean isDone;
-	private Date date;
+	private Date date;	
 	
-	
-	
-	public Task() {		
+	public Task() {				
 	}
 
 	public Task(int id, String description, Date date, boolean isDone) {
@@ -57,7 +55,4 @@ public class Task {
 	public String toString() {
 		return "Todo [id=" + id + ", description=" + description + ", isDone=" + isDone + ", date=" + date + "]";
 	}
-	
-	
-
 }

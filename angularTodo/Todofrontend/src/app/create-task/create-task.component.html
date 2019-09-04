@@ -1,20 +1,9 @@
-<h3>Create Task</h3>
-<div [hidden]="submitted" style="width: 400px;">
-    <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
-        <label for="Id">Task Id</label>
-            <input type="int" class="form-control" id="Id" required [(ngModel)]="task.id"  name="Id">
-        <label for="task">Task Name</label>
-            <input type="text" class="form-control" id="description" required [(ngModel)]="task.description"  name="description">
-        <label for="isDone">Task state</label>
-            <input type="checkbox" class="form-control" id="isDone" required [(ngModel)]="task.isDone"  name="isDone">
-        <label for="isDone">Task date</label>
-            <input type="date" class="form-control" id="date" required [(ngModel)]="task.date"  name="date">
-        </div>       
-        <button type="submit" class="btn btn-success">Submit</button>
+    <form (ngSubmit)="onSubmit()"  class="form-inline">
+        <div class="form-group" >
+            <label for="task">Task Name</label>
+            <input type="text" class="form-control" id="description" required [(ngModel)]="task.description"
+                name="description" placeholder="write here your new task" style="width:958px">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
     </form>
-</div>
 
-<div [hidden]="!submitted">
-    <h4>You submitted successfully!</h4>
-</div>

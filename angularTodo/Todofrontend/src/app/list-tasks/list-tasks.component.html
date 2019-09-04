@@ -1,8 +1,6 @@
-<div id="createbtn">
-  <button type="button" class="btn btn-outline-success" (click)="createTaskPage();">New Task</button>
-</div>
-
-<div class="container" *ngIf="tasks"> 
+<div class="container"> 
+    <app-create-task></app-create-task>
+  <div  *ngIf="tasks">
   <table class="table table-bordered table-hover">
     <thead>
       <th>Task Id</th>
@@ -17,9 +15,10 @@
         <td>{{task.description}}</td>   
         <td>{{task.isDone}}</td>   
         <td>{{task.date | date}}</td> 
-        <td><button (click)="deleteTask(task.id)" class ="btn btn-warning">Delete Task</button></td>  
+        <td><button (click)="deleteTask(task.id)" class ="btn btn-danger">Delete Task</button></td>  
       </tr>
     </tbody>
   </table>
+</div>
 </div>
 
