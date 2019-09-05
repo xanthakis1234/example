@@ -11,7 +11,7 @@ import { Task } from '../list-tasks/list-tasks.component';
 export class UpdateTaskComponent implements OnInit {
   id:number
   task:Task
-  
+
   constructor(
     private todoService: TodoDataService,
     private router: Router,
@@ -20,16 +20,23 @@ export class UpdateTaskComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id)
     this.task = new Task;
     this.todoService.retrieveTask(this.id).subscribe(
-      data=> this.task = data
+      data=> {
+        this.task = data
+        console.log(data)
+      }
     );
   }
 
   saveTask(){
     this.todoService.updateTask(this.id, this.task).subscribe(
-      data=> console.log(data)
+      data=> {
+        console.log(data)
+        this.router.navigate([''])
+    }
     );
-    this.router.navigate(['']);
+
   }
 }

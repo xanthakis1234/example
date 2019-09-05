@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TodoDataService {
-
+  i:number
   constructor(
     private http:HttpClient
   ) { }
@@ -28,11 +28,12 @@ export class TodoDataService {
   }
 
   retrieveTask(id){
+    console.log(id)
     return this.http.get<Task>(`http://localhost:8080/todo/${id}`);
   }
 
   updateTask(id, task){
-    return this.http.put(`http://localhost:8080/todo/${id}`, task);
+    return this.http.put(`http://localhost:8080/todo/updateTask/${id}`, task);
   }
 
 }

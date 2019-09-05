@@ -29,9 +29,6 @@ export class ListTasksComponent implements OnInit{
 
   ngOnInit() {
     this.fetchTasks();
-    this.todoService.retrieveTask(this.id).subscribe(
-      data=> this.task = data
-    );
   }
 
   fetchTasks(){
