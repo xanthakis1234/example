@@ -18,7 +18,9 @@ export class Task{
 export class ListTasksComponent implements OnInit{
   
   tasks:Task[]
-  
+  id:number
+  task:Task
+
   constructor( 
     private todoService:TodoDataService,
     private http:HttpClient,
@@ -27,6 +29,9 @@ export class ListTasksComponent implements OnInit{
 
   ngOnInit() {
     this.fetchTasks();
+    this.todoService.retrieveTask(this.id).subscribe(
+      data=> this.task = data
+    );
   }
 
   fetchTasks(){
@@ -51,5 +56,10 @@ export class ListTasksComponent implements OnInit{
         this.fetchTasks();
       }
     );
+  }
+
+  updateTask(id){
+    console.log(`Update ${id}`);
+    this.router.navigate(['update', id]);
   }
 }

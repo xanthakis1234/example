@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     ListTasksComponent,
     HeaderComponent,
     FooterComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,

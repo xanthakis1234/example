@@ -27,4 +27,12 @@ export class TodoDataService {
     return this.http.delete(`http://localhost:8080/todo/deleteTask/${id}`);
   }
 
+  retrieveTask(id){
+    return this.http.get<Task>(`http://localhost:8080/todo/${id}`);
+  }
+
+  updateTask(id, task){
+    return this.http.put(`http://localhost:8080/todo/${id}`, task);
+  }
+
 }
