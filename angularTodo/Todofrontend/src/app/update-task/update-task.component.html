@@ -6,7 +6,8 @@
   <fieldset class="form-group">
     <label>Change Date</label>
     <input type="date" 
-    [ngModel] = "task.date"
+    [ngModel] = "task.date | date:'yyyy-MM-dd' "
+    (ngModelChange)="task.date = $event"
     class="form-control" name="Date" required="required">
     </fieldset>
 
