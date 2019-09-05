@@ -33,10 +33,7 @@ public class TodoService {
 		listOfTasks.add(task);		
 	}
 
-	public void updateTask(int indexOfTask, Task task) {
-		listOfTasks.set(indexOfTask, task);	
-	}
-	
+
 	public Task getTaskFromId(int id) {
 		for (Task task : listOfTasks) {
 			if (task.getId() == id) {
@@ -45,7 +42,12 @@ public class TodoService {
 		}
 		return null;
 	}
-
+	
+	public Task updateTask(Task task) {
+		deleteTask(task.getId());
+		listOfTasks.add(task);
+		return task;
+	} 
 
 	public void deleteTask(int id) {
 		Task task = getTaskFromId(id);
