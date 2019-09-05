@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+angularTodo/Todofrontend/package.json
+angularTodo/Todofrontend/package-lock.json
