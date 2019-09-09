@@ -37,7 +37,7 @@ public class TodoService {
 	}
 
 	public void createTask(Task task) {
-		listOfTasks.add(task);		
+		taskRepository.save(task);		
 	}
 
 
