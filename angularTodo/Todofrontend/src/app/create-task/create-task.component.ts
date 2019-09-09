@@ -11,7 +11,7 @@ import {ListTasksComponent} from '../list-tasks/list-tasks.component'
   styleUrls: ['./create-task.component.css']
 })
 export class CreateTaskComponent implements OnInit {
-
+ tasks:Task[];
   task:Task = new Task();
   submitted = false;
 
@@ -27,16 +27,18 @@ export class CreateTaskComponent implements OnInit {
   }
 
   save() {
-    this.todoDataService.createTask(this.task)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.task = new Task();
-    this.listTasksComponent.fetchTasks();    
+    this.todoDataService.createTask(this.task).subscribe(
+      response=>{ 
+        this.listTasksComponent.fetchTasks();
+      },      
+       error => console.log(error));        
   }
+ 
 
   onSubmit() {
     this.submitted = true;
     this.save();
-    
+   
   }
 
   @Output() someEvent = new EventEmitter<string>();
