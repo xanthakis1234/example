@@ -40,8 +40,11 @@ public class TodoService {
 		taskRepository.save(task);		
 	}
 
-
 	public Task getTaskFromId(int id) {
+		return taskRepository.findById(id).get();
+	}
+	
+	public Task getTaskFromId1(int id) {
 		for (Task task : listOfTasks) {
 			if (task.getId() == id) {
 				return task;		

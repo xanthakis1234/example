@@ -52,11 +52,6 @@ public class TodoRestController {
 		return service.getTaskFromId(id);
 	}
 	
-	/*@PostMapping(path="todo/createTask")
-	public void createTask(@RequestBody Task task) {
-		service.createTask(task);
-	}*/	
-	
 	@PutMapping(path="todo/updateTask/{id}")
 	public Task updateTask(@PathVariable int id, @RequestBody Task task) {		
 		Task updatedTask = service.updateTask(task);
