@@ -22,9 +22,6 @@ public class TodoRestController {
 	@Autowired
 	private TodoService service;
 	
-	@Autowired
-	private TaskRepository taskRepository;
-	
 	@GetMapping(path="/todo/hello")
 	public String hello () {
 		return "ALOXA";
@@ -36,8 +33,8 @@ public class TodoRestController {
 	}*/
 	
 	@GetMapping(path="todo/getTasks")
-	public Iterable<Task> getAllTasks() {
-		return taskRepository.findAll();
+	public List<Task> getAllTasks() {
+		return service.getAll();
 	}	
 	
 	@GetMapping(path="todo/getTaskIndex")

@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.todo.model.Task;
+import com.todo.repository.TaskRepository;
 
 @Service
 public class TodoService {
 	
-	
+	@Autowired
+	private TaskRepository taskRepository;
 	
 
 	private static List<Task> listOfTasks = new ArrayList();
@@ -25,6 +27,10 @@ public class TodoService {
 		listOfTasks.add(new Task(++id,  "Learn Spring", new Date(), false));
 	}
 
+	public List<Task> getAll() {
+		return taskRepository.findAll();
+	}	
+	
 	public int getTaskIndex(int indexOfTask) {
 		int taskIndex = listOfTasks.indexOf(indexOfTask);
 		return taskIndex;
