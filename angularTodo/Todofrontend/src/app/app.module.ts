@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ListTasksComponent } from './list-tasks/list-tasks.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,20 +10,22 @@ import { AppRoutingModule } from './/app-routing.module';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 
+
 @NgModule({
-  declarations: [
+  declarations: [    
     AppComponent,
     ListTasksComponent,
     HeaderComponent,
     FooterComponent,
     CreateTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent       
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    AppRoutingModule
+    FormsModule,    
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

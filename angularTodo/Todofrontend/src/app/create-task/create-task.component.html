@@ -1,9 +1,19 @@
-    <form (ngSubmit)="onSubmit()"  class="form-inline">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  class="form-inline">
         <div class="form-group" >
             <label for="task">Task Name</label>
-            <input type="text" class="form-control" id="description" required [(ngModel)]="task.description"
-                name="description" placeholder="write here your new task" style="width:958px">
+            <input type="text" formControlName="description"  class="form-control" id="description"  [(ngModel)]="task.description"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"   name="description" placeholder="write here your new task" style="width:958px">
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Task Name is required</div>
+            </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
     </form>
 
+   <!-- <div class="form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+        </div>-->

@@ -3,7 +3,7 @@ import { Task } from '../list-tasks/list-tasks.component';
 import { TodoDataService } from '../service/todo-data.service';
 import { Output, EventEmitter } from '@angular/core';
 import {ListTasksComponent} from '../list-tasks/list-tasks.component'
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-task',
@@ -11,15 +11,29 @@ import {ListTasksComponent} from '../list-tasks/list-tasks.component'
   styleUrls: ['./create-task.component.css']
 })
 export class CreateTaskComponent implements OnInit {
- tasks:Task[];
+
   task:Task = new Task();
   submitted = false;
+  registerForm: FormGroup;
 
   constructor(private todoDataService:TodoDataService,
-    @Inject(forwardRef(() => ListTasksComponent)) private listTasksComponent: ListTasksComponent) { }
+    private formBuilder:FormBuilder,
+    @Inject(forwardRef(() => ListTasksComponent)) private listTasksComponent: ListTasksComponent,
+    ) { }
 
   ngOnInit() {
+
+    this.registerForm = this.formBuilder.group({
+      description: ['', Validators.required]     
+  });
+
   }
+
+  
+  if (this.registerForm.invalid) {
+    return;
+}
+
  
   newTask(): void {
     this.submitted = false;
@@ -33,13 +47,20 @@ export class CreateTaskComponent implements OnInit {
       },      
        error => console.log(error));        
   }
- 
+  get f() { return this.registerForm.controls; }
+
 
   onSubmit() {
     this.submitted = true;
-    this.save();
-   
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
   }
+
+    this.save();
+      
+  }
+
 
   @Output() someEvent = new EventEmitter<string>();
 
