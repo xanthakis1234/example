@@ -31,11 +31,6 @@ public class TodoService {
 		return taskRepository.findAll();
 	}	
 	
-	public int getTaskIndex(int indexOfTask) {
-		int taskIndex = listOfTasks.indexOf(indexOfTask);
-		return taskIndex;
-	}
-
 	public void createTask(Task task) {
 		taskRepository.save(task);		
 	}
@@ -44,13 +39,8 @@ public class TodoService {
 		return taskRepository.findById(id).get();
 	}
 	
-	public Task getTaskFromId1(int id) {
-		for (Task task : listOfTasks) {
-			if (task.getId() == id) {
-				return task;		
-			}
-		}
-		return null;
+	public void deleteTask(int id) {
+		taskRepository.deleteById(id);
 	}
 	
 	public Task updateTask(Task task) {
@@ -58,9 +48,4 @@ public class TodoService {
 		listOfTasks.add(task);
 		return task;
 	} 
-
-	public void deleteTask(int id) {
-		Task task = getTaskFromId(id);
-		listOfTasks.remove(task);		
-	}
 }
