@@ -47,6 +47,11 @@ public class TodoRestController {
 		return service.getTaskFromId(id);
 	}
 	
+//	@GetMapping(path="todo/{id}")
+//	public Task getTask(@PathVariable int id) {
+//		return service.getTaskFromId(id);
+//	}
+	
 	@PostMapping(path="todo/createTask")
 	public void createTask(@RequestBody Task task) {
 		service.createTask(task);
