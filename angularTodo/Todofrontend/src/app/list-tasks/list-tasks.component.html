@@ -3,17 +3,13 @@
   <div  *ngIf="tasks">
   <table class="table table-bordered table-hover">
     <thead>
-      <th>Task Id</th>
       <th>Task Description</th>
-      <th>Completed</th>
       <th>Date</th>
       <th>Actions</th>
         </thead> 
     <tbody>
       <tr *ngFor="let task of tasks">
-        <td>{{task.id}}</td>
-        <td>{{task.description}}</td>   
-        <td>{{task.isDone}}</td>   
+        <td>{{task.description}}</td>    
         <td>{{task.date | date}}</td> 
         <td><button (click)="updateTask(task.id)" class ="btn btn-success">Update Task</button>&nbsp;&nbsp;<button (click)="deleteTask(task.id)" class ="btn btn-danger">Delete Task</button></td>  
       </tr>
