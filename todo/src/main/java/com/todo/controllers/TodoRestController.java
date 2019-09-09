@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.todo.model.Task;
+import com.todo.repository.TaskRepository;
 import com.todo.services.TodoService;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -21,15 +22,23 @@ public class TodoRestController {
 	@Autowired
 	private TodoService service;
 	
+	@Autowired
+	private TaskRepository taskRepository;
+	
 	@GetMapping(path="/todo/hello")
 	public String hello () {
 		return "ALOXA";
 	}
 
-	@GetMapping(path="todo/getTasks")
+/*	@GetMapping(path="todo/getTasks")
 	public List<Task> getTasks() {
 		return service.getTasks();
-	}
+	}*/
+	
+	@GetMapping(path="todo/getTasks")
+	public Iterable<Task> getAllTasks() {
+		return taskRepository.findAll();
+	}	
 	
 	@GetMapping(path="todo/getTaskIndex")
 	public int getTaskIndex(int indexOfTask) {
@@ -56,4 +65,8 @@ public class TodoRestController {
 	public void deleteTask(@PathVariable int id) {
 		service.deleteTask(id);
 	}	
+	
+	public String get() {
+	    return "Hello JUnit 5";
+	}		
 }

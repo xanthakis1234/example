@@ -2,14 +2,28 @@ package com.todo.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Task {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="idtask") // if differs from actual tableName in db must use @Column
+	private int id;	
 	private String description;
 	private boolean isDone;
 	private Date date;	
 	
 	public Task() {				
+	}
+	
+	public Task(String description) {		
+		this.description = description;
 	}
 
 	public Task(int id, String description, Date date, boolean isDone) {
