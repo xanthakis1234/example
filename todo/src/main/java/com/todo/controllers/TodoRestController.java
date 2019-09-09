@@ -1,5 +1,6 @@
 package com.todo.controllers;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +33,7 @@ public class TodoRestController {
 
 	@PostMapping(path = "todo/createTask")
 	public void createTask(@RequestBody Task task) {
-
+		task.setDate(new Date());
 		service.createTask(task);
 	}
 
