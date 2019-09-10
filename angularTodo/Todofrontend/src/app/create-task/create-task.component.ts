@@ -28,13 +28,7 @@ export class CreateTaskComponent implements OnInit {
   });
 
   }
-
-  
-  if (this.registerForm.invalid) {
-    return;
-}
-
- 
+   
   newTask(): void {
     this.submitted = false;
     this.task = new Task();
