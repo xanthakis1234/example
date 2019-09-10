@@ -49,11 +49,13 @@ export class CreateTaskComponent implements OnInit {
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
+    }
+    this.save();
+    this.registerForm.reset();
+    this.submitted = false;
   }
 
-    this.save();
-      
-  }
+  
 
 
   @Output() someEvent = new EventEmitter<string>();
