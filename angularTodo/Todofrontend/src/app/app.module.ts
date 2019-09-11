@@ -8,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { CreateTaskComponent } from './create-task/create-task.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [    
@@ -16,14 +17,16 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     ListTasksComponent,
     HeaderComponent,
     FooterComponent,
-    CreateTaskComponent      
+    CreateTaskComponent,
+    DeleteModalComponent      
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,    
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

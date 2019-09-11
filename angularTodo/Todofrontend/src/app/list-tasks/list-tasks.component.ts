@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodoDataService } from '../service/todo-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 export class Task{
   public id: number;
@@ -20,18 +21,20 @@ export class ListTasksComponent implements OnInit{
   tasks:Task[]
   id:number
   task:Task
+  idTaskToBeDeleted:number
 
   constructor( 
     private todoService:TodoDataService,
     private http:HttpClient,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
     this.fetchTasks();
   }
 
-  fetchTasks(){
+  public fetchTasks(){
     this.todoService.printTasks().subscribe(
       response => {
         this.tasks = response;
@@ -67,5 +70,9 @@ export class ListTasksComponent implements OnInit{
         console.log(data)
       }
     );
+  }
+
+  setIdToBeDeleted(id){
+    this.todoService.setIdToBeDeleted(id);
   }
 }

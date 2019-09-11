@@ -7,13 +7,22 @@ import { Observable } from 'rxjs';
 })
 export class TodoDataService {
   i:number
+  idToBeDeleted:number
   constructor(
     private http:HttpClient
   ) { }
   
-  // Url to fetch the employee records from the spring application.
+  setIdToBeDeleted(id){
+    this.idToBeDeleted = id;
+    console.log(this.idToBeDeleted)
+  }
+
+  getIdToBeDeleted(){
+    return this.idToBeDeleted;
+  }
+  
   readonly APP_URL = 'http://localhost:8080';
-  // Method to fetch all employees from the database table.
+  
   printTasks() {
     return this.http.get<Task[]>(this.APP_URL + '/todo/getTasks');
   }
