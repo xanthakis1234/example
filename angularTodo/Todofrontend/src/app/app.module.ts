@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { CreateTaskComponent } from './create-task/create-task.component';
-import { UpdateTaskComponent } from './update-task/update-task.component';
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
     ListTasksComponent,
     HeaderComponent,
     FooterComponent,
-    CreateTaskComponent,
-    UpdateTaskComponent       
+    CreateTaskComponent      
   ],
   imports: [
     BrowserModule,
