@@ -55,8 +55,17 @@ export class ListTasksComponent implements OnInit{
     );
   }
 
-  updateTask(id){
-    console.log(`Update ${id}`);
-    this.router.navigate(['update', id]);
+  updateTaskInTable(id , event: Event){
+    this.task = this.tasks.find(x => x.id == id);
+    console.log(event);
+    console.log((<HTMLParamElement>event.target).textContent)
+    this.task.description = (<HTMLParamElement>event.target).textContent;
+    console.log(this.task.description);
+    console.log(`Update ${id} , ${this.task}`);
+    this.todoService.updateTask(id, this.task).subscribe(
+      data=> {
+        console.log(data)
+      }
+    );
   }
 }

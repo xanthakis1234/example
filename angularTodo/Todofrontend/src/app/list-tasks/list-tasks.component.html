@@ -9,12 +9,12 @@
         </thead> 
     <tbody>
       <tr *ngFor="let task of tasks">
-        <td>{{task.description}}</td>    
+        <td contentEditable (blur)="updateTaskInTable(task.id , $event)">{{task.description}}</td>    
         <td>{{task.date | date}}</td> 
-        <td><button (click)="updateTask(task.id)" class ="btn btn-success">Update Task</button>&nbsp;&nbsp;<button (click)="deleteTask(task.id)" class ="btn btn-danger">Delete Task</button></td>  
+        <td><button (click)="deleteTask(task.id)" class ="btn btn-danger">Delete Task</button></td>  
       </tr>
     </tbody>
   </table>
 </div>
 </div>
-
+ 
