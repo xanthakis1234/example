@@ -22,6 +22,8 @@ export class ListTasksComponent implements OnInit{
   id:number
   task:Task
   idTaskToBeDeleted:number
+  modalHeader:string = 'Delete Confirmation';
+  modalBody:string ="Are you sure you want to delete this task?";
 
   constructor( 
     private todoService:TodoDataService,
@@ -72,7 +74,7 @@ export class ListTasksComponent implements OnInit{
     );
   }
 
-  setIdToBeDeleted(id){
-    this.todoService.setIdToBeDeleted(id);
+  receiveMessage($event , id){
+    this.deleteTask(id);
   }
 }

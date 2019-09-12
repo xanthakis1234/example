@@ -8,7 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -28,6 +28,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   exports: [
     HomeComponent,
     ListTasksComponent
+  ],
+  providers: [
+    NgbActiveModal
   ]
 })
 export class HomeModule { }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ListTasksComponent } from '../home/home-component/Components/list-tasks/list-tasks.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TodoDataService } from '../service/todo-data.service';
 
 @Component({
@@ -9,12 +9,17 @@ import { TodoDataService } from '../service/todo-data.service';
   styleUrls: ['./delete-modal.component.css']
 })
 export class DeleteModalComponent implements OnInit {
-//test
-  idToBeDeleted:number
+
+  @Input() modalHeader:string
+  @Input() modalBody:string
+  @Output() messageEvent = new EventEmitter();
+  @Output() CancelEvent = new EventEmitter<string>();
+
   constructor(
     private modalService: NgbModal,
     private todoService:TodoDataService,
-    private list: ListTasksComponent
+    private list: ListTasksComponent,
+    private modal: NgbActiveModal
     ) { 
   }
 
@@ -22,15 +27,15 @@ export class DeleteModalComponent implements OnInit {
   }
   
   open(content) {
-    const modalRef = this.modalService.open(content, {ariaLabelledBy: 'modal-primary-title'});
-    this.idToBeDeleted = this.todoService.getIdToBeDeleted();
+    this.modal = this.modalService.open(content, {ariaLabelledBy: 'modal-primary-title'});
   }
 
   onCloseModal(){
-      this.todoService.deleteTask(this.idToBeDeleted).subscribe(
-        response =>{
-          this.list.fetchTasks();
-        }
-      );
-    }
+    this.messageEvent.emit();
+    this.modal.close();
   }
+
+  onAbort(message:string){
+    this.modal.dismiss();
+  }
+}

@@ -2,12 +2,18 @@
 
 <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-primary-title">Are you sure you want to delete this task?</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <h4 class="modal-title" id="modal-primary-title">{{ modalHeader }}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="onAbort('Cancel')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <button class="btn btn-danger" (click)="modal.close(); onCloseModal()" >Yes</button>&nbsp;&nbsp;<button class="btn btn-secondary" (click)="modal.dismiss('Cancel')">Cancel</button>
+      {{ modalBody }}
+      <span class="text-danger">This cannot be undone.</span>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" (click)="onCloseModal()" >Yes</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-secondary" (click)="onAbort('Cancel')">Cancel</button>
     </div>
   </ng-template>

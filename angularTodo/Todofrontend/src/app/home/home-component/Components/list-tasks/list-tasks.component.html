@@ -11,7 +11,13 @@
       <tr *ngFor="let task of tasks">
         <td contentEditable (blur)="updateTaskInTable(task.id , $event)">{{task.description}}</td>    
         <td>{{task.date | date}}</td> 
-         <td (mouseover)="setIdToBeDeleted(task.id)"><app-delete-modal></app-delete-modal>
+         <td>
+           <app-delete-modal
+           [modalHeader] = 'modalHeader'
+           [modalBody] = 'modalBody'
+           (messageEvent)="receiveMessage($event , task.id)">
+          </app-delete-modal>
+          </td>
       </tr>
     </tbody>
   </table>

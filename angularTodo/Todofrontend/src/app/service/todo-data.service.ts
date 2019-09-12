@@ -7,19 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class TodoDataService {
   i:number
-  idToBeDeleted:number
   constructor(
     private http:HttpClient
   ) { }
-  
-  setIdToBeDeleted(id){
-    this.idToBeDeleted = id;
-    console.log(this.idToBeDeleted)
-  }
-
-  getIdToBeDeleted(){
-    return this.idToBeDeleted;
-  }
   
   readonly APP_URL = 'http://localhost:8080';
   
