@@ -9,7 +9,7 @@ import { TodoDataService } from '../service/todo-data.service';
   styleUrls: ['./delete-modal.component.css']
 })
 export class DeleteModalComponent implements OnInit {
-
+//test
   idToBeDeleted:number
   constructor(
     private modalService: NgbModal,
