@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Task } from '../home/home-component/Components/list-tasks/list-tasks.component';
+import { Task } from '../home/Components/list-tasks/list-tasks.component';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'

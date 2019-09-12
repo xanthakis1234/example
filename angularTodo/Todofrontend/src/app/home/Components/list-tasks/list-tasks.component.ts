@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TodoDataService } from '../../../../service/todo-data.service';
+import { TodoDataService } from '../../../service/todo-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class Task{
   public id: number;

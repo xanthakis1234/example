@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ListTasksComponent } from '../home/home-component/Components/list-tasks/list-tasks.component';
+import { ListTasksComponent } from '../../../home/Components/list-tasks/list-tasks.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TodoDataService } from '../service/todo-data.service';
+import { TodoDataService } from '../../../service/todo-data.service';
 
 @Component({
   selector: 'app-delete-modal',
