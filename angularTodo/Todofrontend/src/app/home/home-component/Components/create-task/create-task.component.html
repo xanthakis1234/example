@@ -5,8 +5,8 @@
             [ngClass]="{ 'is-invalid': submitted && f.description.errors }"   name="description" placeholder="write here your new task" style="width:958px">
            
             <button type="submit" class="btn btn-success">Submit</button>
-            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                    <div *ngIf="f.description.errors.required">Task Name is required</div>
+            <div *ngIf="submitted && !f.description.errors" class="invalid-feedback">
+                    <div *ngIf="!f.description.errors.required">Task Name is required</div>
                 </div>
         </div>
     </form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListTasksComponent } from '../list-tasks/list-tasks.component';
+import { ListTasksComponent } from '../home/home-component/Components/list-tasks/list-tasks.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TodoDataService } from '../service/todo-data.service';
 

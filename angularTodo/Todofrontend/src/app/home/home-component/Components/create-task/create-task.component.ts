@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, forwardRef } from '@angular/core';
 import { Task } from '../list-tasks/list-tasks.component';
-import { TodoDataService } from '../service/todo-data.service';
+import { TodoDataService } from '../../../../service/todo-data.service';
 import { Output, EventEmitter } from '@angular/core';
 import {ListTasksComponent} from '../list-tasks/list-tasks.component'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

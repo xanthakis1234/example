@@ -3,30 +3,21 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { ListTasksComponent } from './list-tasks/list-tasks.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { CreateTaskComponent } from './create-task/create-task.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [    
     AppComponent,
-    ListTasksComponent,
     HeaderComponent,
-    FooterComponent,
-    CreateTaskComponent,
-    DeleteModalComponent      
+    FooterComponent     
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,    
+  imports: [   
     AppRoutingModule,
-    ReactiveFormsModule,
-    NgbModule.forRoot()
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
