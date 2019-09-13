@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  title = 'Todo App';
+  
+  @Input() languageList;
+  @Output() onLanguageChangeEvent = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  useLanguage(language:string) {
+    this.onLanguageChangeEvent.emit(language);
+  }
 }

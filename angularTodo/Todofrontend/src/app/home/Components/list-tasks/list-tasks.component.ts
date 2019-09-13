@@ -11,7 +11,6 @@ import { Task } from '../../../models/task';
   styleUrls: ['./list-tasks.component.css']
 })
 export class ListTasksComponent implements OnInit{
-  
   tasks: Task[]
   id: number
   task: Task

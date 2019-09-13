@@ -1,7 +1,6 @@
 <div class="row">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  class="form-inline">
         <div class="form-group" >
-            <!-- &nbsp; <label for="task">Task Name</label> -->
             &nbsp; <input type="text" formControlName="description"  class="form-control" id="description"  [(ngModel)]="task.description"
             [ngClass]="{ 'is-invalid': submitted && f.description.errors }"   name="description" placeholder="Write here your new task" style="width:845px">
            

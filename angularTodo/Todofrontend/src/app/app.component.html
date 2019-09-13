@@ -1,5 +1,7 @@
 <div class="container">
-    <app-header></app-header>
+    <app-header
+        [languageList]="LANGUAGE_LIST"
+        (onLanguageChangeEvent)="changeLanguage($event)"></app-header>
 
     <router-outlet></router-outlet>
   
