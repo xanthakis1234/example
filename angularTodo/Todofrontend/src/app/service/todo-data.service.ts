@@ -1,38 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Task } from '../home/Components/list-tasks/list-tasks.component';
+import { Task } from '../models/task';
 import { Observable } from 'rxjs';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class TodoDataService {
-  i:number
+ 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
   
-  readonly APP_URL = 'http://localhost:8080';
+  readonly APP_URL = 'http://localhost:8080/todo';
   
   printTasks() {
-    return this.http.get<Task[]>(this.APP_URL + '/todo/getTasks');
+    return this.http.get<Task[]>(this.APP_URL + '/getTasks');
   }
 
  
    createTask(task: Object): Observable<Object> {
-    return this.http.post(this.APP_URL + '/todo/createTask', task);
+    return this.http.post(this.APP_URL + '/createTask', task);
   }
 
   deleteTask(id){
-    return this.http.delete(`http://localhost:8080/todo/deleteTask/${id}`);
+    return this.http.delete(this.APP_URL + `/deleteTask/${id}`);
   }
 
   retrieveTask(id){
     console.log(id)
-    return this.http.get<Task>(`http://localhost:8080/todo/${id}`);
+    return this.http.get<Task>(this.APP_URL + `/${id}`);
   }
 
   updateTask(id, task){
-    return this.http.put(`http://localhost:8080/todo/updateTask/${id}`, task);
+    return this.http.put(this.APP_URL + `/updateTask/${id}`, task);
   }
 
 }

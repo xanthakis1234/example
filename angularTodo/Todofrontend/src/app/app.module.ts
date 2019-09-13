@@ -5,12 +5,14 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [    
     AppComponent,
     HeaderComponent,
-    FooterComponent     
+    FooterComponent,
+    AboutComponent     
   ],
   imports: [   
     AppRoutingModule,
