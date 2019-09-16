@@ -45,6 +45,7 @@ public class TodoRestController {
 	@PutMapping(path = "todo/updateTask/{id}")
 	public Task updateTask(@PathVariable int id, @RequestBody Task task) {
 		Task updatedTask = service.updateTask(task);
+		updatedTask.setDate(new Date());
 		return updatedTask;
 	}
 
