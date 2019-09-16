@@ -1,6 +1,7 @@
 package com.todo.services;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,14 +14,15 @@ public class TodoService {
 	
 	@Autowired
 	private TaskRepository taskRepository;
-	private static List<Task> listOfTasks = new ArrayList();
 
-	
 	public List<Task> getAll() {
 		return taskRepository.findAll();
 	}	
 	
 	public void createTask(Task task) {
+		LocalDateTime newDate = LocalDateTime.now();
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		task.setDate(newDate.format(dateFormat));
 		taskRepository.save(task);		
 	}
 
@@ -32,6 +34,9 @@ public class TodoService {
 		taskRepository.deleteById(id);
 	}
 	public Task updateTask(Task task) {
+		LocalDateTime newDate = LocalDateTime.now();
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		task.setDate(newDate.format(dateFormat));
 		taskRepository.save(task);
 		Task updatedTask = task;
 		return updatedTask;

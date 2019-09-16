@@ -16,8 +16,7 @@ public class Task {
 	@Column(name="idtask") // if differs from actual tableName in db must use @Column
 	private int id;	
 	private String description;
-	private boolean isDone;
-	private Date date;	
+	private String date;	
 	
 	public Task() {				
 	}
@@ -26,10 +25,9 @@ public class Task {
 		this.description = description;
 	}
 
-	public Task(int id, String description, Date date, boolean isDone) {
+	public Task(int id, String description, String date) {
 		this.id = id;
 		this.description = description;
-		this.isDone = isDone;
 		this.date = date;
 	}
 
@@ -49,24 +47,16 @@ public class Task {
 		this.description = description;
 	}
 
-	public boolean isDone() {
-		return isDone;
-	}
-
-	public void setDone(boolean isDone) {
-		this.isDone = isDone;
-	}
-
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", description=" + description + ", isDone=" + isDone + ", date=" + date + "]";
+		return "Todo [id=" + id + ", description=" + description + ", date=" + date + "]";
 	}
 }

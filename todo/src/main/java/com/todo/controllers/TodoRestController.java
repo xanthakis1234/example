@@ -33,7 +33,7 @@ public class TodoRestController {
 
 	@PostMapping(path = "todo/createTask")
 	public void createTask(@RequestBody Task task) {
-		task.setDate(new Date());
+//		task.setDate(new Date());
 		service.createTask(task);
 	}
 
@@ -45,7 +45,7 @@ public class TodoRestController {
 	@PutMapping(path = "todo/updateTask/{id}")
 	public Task updateTask(@PathVariable int id, @RequestBody Task task) {
 		Task updatedTask = service.updateTask(task);
-		updatedTask.setDate(new Date());
+//		updatedTask.setDate(new Date());
 		return updatedTask;
 	}
 
