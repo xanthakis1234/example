@@ -10,7 +10,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
   imports: [
     CommonModule,
     HttpClientModule,
-    NgbModule.forRoot(),
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

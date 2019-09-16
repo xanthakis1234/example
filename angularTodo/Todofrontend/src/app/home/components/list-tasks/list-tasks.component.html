@@ -10,7 +10,7 @@
     <tbody class="text-center">
       <tr *ngFor="let task of tasks">
         <td contentEditable (blur)="updateTaskInTable(task.id , $event)">{{task.description}}</td>    
-        <td>{{task.date | date}}</td> 
+        <td>{{task.date | date :'short'}}</td> 
          <td>
            <app-delete-modal
            [modalHeader] = 'modalHeader'
