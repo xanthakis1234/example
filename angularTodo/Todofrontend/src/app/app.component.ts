@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import {  OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { Constants } from './constans';

@@ -3,9 +3,9 @@
   <div  *ngIf="tasks">
   <table class="table table-bordered table-hover">
     <thead class="text-center">
-      <th>Task Description</th>
-      <th>Date</th>
-      <th>Actions</th>
+      <th>{{ 'table.description' | translate }}</th>
+      <th>{{ 'table.date' | translate }}</th>
+      <th>{{ 'table.actions' | translate }}</th>
         </thead> 
     <tbody class="text-center">
       <tr *ngFor="let task of tasks">

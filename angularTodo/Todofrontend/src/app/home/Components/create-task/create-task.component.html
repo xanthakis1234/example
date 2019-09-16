@@ -2,9 +2,9 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  class="form-inline">
         <div class="form-group" >
             &nbsp; <input type="text" formControlName="description"  class="form-control" id="description"  [(ngModel)]="task.description"
-            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"   name="description" placeholder="Write here your new task" style="width:845px">
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"   name="description" placeholder="Write here your new task" style="width:860px">
            
-            &nbsp; <button type="submit" class="btn btn-success">Submit</button>
+            &nbsp; <button type="submit" class="btn btn-success">{{ 'application.savebutton' | translate}}</button>
             <div *ngIf="submitted && !f.description.errors" class="invalid-feedback">
                     <div *ngIf="!f.description.errors.required">Task Name is required</div>
                 </div>

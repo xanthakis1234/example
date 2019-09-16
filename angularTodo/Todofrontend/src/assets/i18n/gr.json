@@ -1,3 +1,13 @@
 {
-    "application.title": "Todo App GR"
+    "application.title": "Todo App GR",
+    "application.savebutton": "Αποθήκευση",
+    "application.deletebutton": "Διαγραφή",
+    "table.description": "Περιγραφή",
+    "table.date": "Ημερομηνία",
+    "table.actions": "Ενέργειες",
+    "modal.header": "Επιβεβαίωση Διαγραφης",
+    "modal.body": "Ειστε σίγουροι οτι θελετε να το διαγραψετε;",
+    "modal.alert": "Αυτή η ενέργεια δεν είναι αναστρέψιμη.",
+    "modal.confirm": "Αποδοχή",
+    "modal.cancel": "Ακύρωση"
 }

@@ -1,19 +1,19 @@
-<button class="btn btn-danger" (click)="open(content)">Delete Task</button>
+<button class="btn btn-danger" (click)="open(content)">{{ 'application.deletebutton' | translate}}</button>
 
 <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-primary-title">{{ modalHeader }}</h4>
+      <h4 class="modal-title" id="modal-primary-title">{{ 'modal.header' | translate }}</h4>
       <button type="button" class="close" aria-label="Close" (click)="onAbort('Cancel')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      {{ modalBody }}
-      <span class="text-danger">This cannot be undone.</span>
+      {{ 'modal.body' | translate }}
+      <span class="text-danger">{{'modal.alert' | translate}}</span>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger" (click)="onCloseModal()" >Yes</button>
+        <button class="btn btn-danger" (click)="onCloseModal()" >{{'modal.confirm' | translate}}</button>
         &nbsp;&nbsp;
-        <button class="btn btn-secondary" (click)="onAbort('Cancel')">Cancel</button>
+        <button class="btn btn-secondary" (click)="onAbort('Cancel')">{{'modal.cancel' | translate}}</button>
     </div>
   </ng-template>

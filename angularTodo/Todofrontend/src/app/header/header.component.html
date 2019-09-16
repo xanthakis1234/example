@@ -2,8 +2,18 @@
     <h1 class="text-danger text-center" routerLink=''>{{ 'application.title' | translate }}</h1>
     <br>
     <br>
-    
-
-    <button *ngFor="let l of languageList" (click)="useLanguage(l.iso)">{{l.language}}</button>
+    <div class = "row">
+        <div class ="col">
+            <div class="float-right">
+                <button 
+                    class="btn btn-flat btn-lg" 
+                    *ngFor="let l of languageList" 
+                    (click)="useLanguage(l.iso)">{{l.language}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
     <br>
 </div>
