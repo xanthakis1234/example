@@ -63,6 +63,7 @@ export class ListTasksComponent implements OnInit{
     this.todoService.updateTask(id, this.task).subscribe(
       data=> {
         console.log(data)
+        this.fetchTasks();
       }
     );
   }
