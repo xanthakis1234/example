@@ -1,4 +1,27 @@
 <div class="container">
+        <div class = "row">
+                <div class ="col">
+                    <div class="float-right">
+                            <select 
+                                #selectLanguage
+                                class="form-control selcls" 
+                                [(ngModel)]="selectedLanguage"
+                                (change)="useLanguage(selectLanguage.value)"
+                                [value]="selectedLanguage">
+                                    <option 
+                                        *ngFor="let l of languageList" 
+                                        [value]="l.iso"
+                                        >{{l.language}}
+                                    </option>     
+                            </select>          
+                        <!-- <button 
+                            class="btn btn-flat btn-lg" 
+                            *ngFor="let l of languageList" 
+                            (click)="useLanguage(l.iso)">{{l.language}}
+                        </button> -->
+                    </div>
+                </div>
+            </div>
     <div class = "row">
         <div class ="col text-center">
             <a routerLink=''>
@@ -7,17 +30,6 @@
         </div>
     </div>
     <!-- <h1 class="text-danger text-center" routerLink=''>{{ 'application.title' | translate }}</h1> -->
-    <div class = "row">
-        <div class ="col">
-            <div class="float-right">
-                <button 
-                    class="btn btn-flat btn-lg" 
-                    *ngFor="let l of languageList" 
-                    (click)="useLanguage(l.iso)">{{l.language}}
-                </button>
-            </div>
-        </div>
-    </div>
     <br>
     <br>
     <br>

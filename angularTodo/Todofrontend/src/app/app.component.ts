@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
 
   private translateService: TranslateService
   LANGUAGE_LIST = Constants.LANGUAGE_LIST;
-
+  DEFAULT_LANGUAGE = Constants.DEFAULT_LANGUAGE;
+  
   constructor(private translate: TranslateService) {
     this.translateService = translate;
     this.translateService.setDefaultLang(Constants.DEFAULT_LANGUAGE);

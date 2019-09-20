@@ -1,6 +1,7 @@
 <div class="container  position-relative">
     <app-header
-        [languageList]="LANGUAGE_LIST"
+        [languageList] = "LANGUAGE_LIST"
+        [defaultLanguage]= "DEFAULT_LANGUAGE"
         (onLanguageChangeEvent)="changeLanguage($event)">
     </app-header>
     
