@@ -25,19 +25,14 @@ public class TodoRestController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping(path = "/todo/register")
-	public Boolean register(@RequestBody User user) {
-		if (userService.getUserFromId(user.getIduser()) != null) {
-			return true;
-		}else {
+	@PostMapping(path = "/todo/register")
+	public void register(@RequestBody User user) {
 			userService.createUser(user);
-			return false;	
-		}
 	}
 	
-	@GetMapping(path = "/todo/login")
-	public Boolean login(@RequestBody User user) {
-		if (userService.getUserFromId(user.getIduser()) != null) {
+	@GetMapping(path = "/todo/login/{username}")
+	public Boolean login(@PathVariable String username) {
+		if (userService.getUserFromUsername(username) != null) {
 			return true;
 		}else {
 			return false;
@@ -63,7 +58,6 @@ public class TodoRestController {
 	@PutMapping(path = "todo/updateTask/{id}")
 	public Task updateTask(@PathVariable int id, @RequestBody Task task) {
 		Task updatedTask = service.updateTask(task);
-//		updatedTask.setDate(new Date());
 		return updatedTask;
 	}
 
