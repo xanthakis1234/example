@@ -1,12 +1,14 @@
 package com.todo.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class Task {
@@ -17,6 +19,10 @@ public class Task {
 	private int id;	
 	private String description;
 	private String date;	
+	
+	@ManyToOne
+    @JoinColumn(name="iduser")
+	private User user;
 	
 	public Task() {				
 	}
@@ -55,8 +61,18 @@ public class Task {
 		this.date = date;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", description=" + description + ", date=" + date + "]";
+		return "Task [id=" + id + ", description=" + description + ", date=" + date + ", user=" + user + "]";
 	}
+
+
 }
