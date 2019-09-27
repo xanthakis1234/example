@@ -1,6 +1,9 @@
 package com.todo.controllers;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,9 +33,9 @@ public class TodoRestController {
 			userService.createUser(user);
 	}
 	
-	@GetMapping(path = "/todo/login/{username}")
-	public Boolean login(@PathVariable String username) {
-		if (userService.getUserFromUsername(username) != null) {
+	@PostMapping(path = "/todo/login")
+	public Boolean login(@RequestBody @Valid User user) {
+		if (userService.getUserFromUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
 			return true;
 		}else {
 			return false;
