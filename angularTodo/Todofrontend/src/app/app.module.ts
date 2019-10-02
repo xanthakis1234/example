@@ -8,13 +8,21 @@ import { SharedModule } from './shared/shared.module';
 import { AboutComponent } from './about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [    
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AboutComponent     
+    AboutComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent,
+    PagenotfoundComponent     
   ],
   imports: [   
     AppRoutingModule,

@@ -1,12 +1,16 @@
 <div class="container  position-relative">
+    <div id="header">
     <app-header
         [languageList] = "LANGUAGE_LIST"
         [defaultLanguage]= "DEFAULT_LANGUAGE"
         (onLanguageChangeEvent)="changeLanguage($event)">
     </app-header>
-    
+    </div>
+    <div id="content">
     <router-outlet></router-outlet>
-  
+    </div>
+    <div id="footer">
     <app-footer></app-footer> 
+    </div>
 </div>
 
