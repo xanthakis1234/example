@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TodoDataService } from '../service/todo-data.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,29 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  profileForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+  errorMessage = "Invalid Credentials";
+  invalidLogin = false;
+  
+  constructor(private router: Router,
+    private todoDataService: TodoDataService) { }
 
   ngOnInit() {
   }
+
+  onSubmit() {
+    if (this.profileForm.get('username').value == "nek" && 
+        this.profileForm.get('password').value == "1234"){
+          
+          this.invalidLogin = false;
+          this.router.navigate(['home'])
+          
+    } else {
+      this.invalidLogin = true;
+    }
+ }
 
 }

@@ -36,5 +36,4 @@ export class TodoDataService {
   updateTask(id, task){
     return this.http.put(this.APP_URL + `/updateTask/${id}`, task);
   }
-
 }

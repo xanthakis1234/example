@@ -7,7 +7,7 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { AboutComponent } from './about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
@@ -28,6 +28,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     AppRoutingModule,
     HomeModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   providers: [],
