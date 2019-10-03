@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   errorMessage = "Invalid Credentials";
   invalidLogin = false;
   
+
   constructor(private router: Router,
     private todoDataService: TodoDataService) { }
 
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
           
           this.invalidLogin = false;
           this.router.navigate(['home'])
-          
+          this.todoDataService.onLogIn();
     } else {
       this.invalidLogin = true;
     }

@@ -13,7 +13,7 @@
                                         [value]="l.iso"
                                         >{{l.language}}
                                     </option>     
-                            </select>          
+                            </select>        
                         <!-- <button 
                             class="btn btn-flat btn-lg" 
                             *ngFor="let l of languageList" 
@@ -28,6 +28,14 @@
                 <img src="../../assets/download.png" height="200" width="200">
             </a>
         </div>
+    </div>
+    <div class ="col" *ngIf="!!checkIfLoggedIn();">
+        <app-logout 
+            (messageEvent)="receiveMessage($event)">
+        </app-logout>
+        <!-- <div class="float-right">
+            <button class="btn btn-info" *ngIf="!!checkIfLoggedIn();">Logout</button>
+        </div> -->
     </div>
     <!-- <h1 class="text-danger text-center" routerLink=''>{{ 'application.title' | translate }}</h1> -->
     <br>

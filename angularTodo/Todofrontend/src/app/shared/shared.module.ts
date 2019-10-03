@@ -5,6 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { LogoutComponent } from './Modals/logout/logout.component';
 
 @NgModule({
   imports: [
@@ -20,12 +21,14 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     })
   ],
   declarations: [
-    DeleteModalComponent
+    DeleteModalComponent,
+    LogoutComponent
   ],
   exports: [
     CommonModule,
     TranslateModule,
-    DeleteModalComponent
+    DeleteModalComponent,
+    LogoutComponent
   ],
   providers: [
     NgbActiveModal

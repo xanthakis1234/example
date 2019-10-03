@@ -8,10 +8,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TodoDataService {
- 
+
+  isloggedIn: boolean;
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    this.isloggedIn = false;
+  }
   
   readonly APP_URL = 'http://localhost:8080/todo';
   
@@ -35,5 +38,12 @@ export class TodoDataService {
 
   updateTask(id, task){
     return this.http.put(this.APP_URL + `/updateTask/${id}`, task);
+  }
+
+  checkIfLoggedIn(){
+      return this.isloggedIn;
+  }
+  onLogIn() {
+    this.isloggedIn = true;
   }
 }
