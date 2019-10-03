@@ -46,4 +46,8 @@ export class TodoDataService {
   onLogIn() {
     this.isloggedIn = true;
   }
+
+  onLogout(){
+    this.isloggedIn = false;
+  }
 }

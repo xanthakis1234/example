@@ -6,11 +6,12 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { RouteGuardService } from './service/route-guard.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate:[RouteGuardService]},
   { path: 'about', component: AboutComponent },
   { path:  '**', component: PagenotfoundComponent }
 ];
