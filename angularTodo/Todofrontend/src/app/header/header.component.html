@@ -24,7 +24,7 @@
             </div>
     <div class = "row">
         <div class ="col text-center">
-            <a routerLink=''>
+            <a [routerLink]="!!todoDataService.checkIfLoggedIn() ? ['home'] : []">
                 <img src="../../assets/download.png" height="200" width="200">
             </a>
         </div>
