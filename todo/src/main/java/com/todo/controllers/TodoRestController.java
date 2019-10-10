@@ -1,10 +1,14 @@
 package com.todo.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JacksonJsonParser;
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,12 +38,20 @@ public class TodoRestController {
 	}
 	
 	@PostMapping(path = "/todo/login")
-	public Boolean login(@RequestBody @Valid User user) {
-		if (userService.getUserFromUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
-			return true;
-		}else {
-			return false;
-		}
+	public User login(@RequestBody String jsonString) {
+		JsonParser springParser = JsonParserFactory.getJsonParser();
+		Map<String, Object> map = springParser.parseMap(jsonString);
+		String username = (String) map.get("username");
+		String password = (String) map.get("password");
+		System.out.println(username + password);
+		User user = userService.getUserFromUsernameAndPassword(username, password);
+//		if (userService.getUserFromUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+		
+		return user;
 	}
 	
 	@GetMapping(path = "todo/getTasks")
