@@ -4,6 +4,7 @@ import { Constants } from '../constans';
 import { TodoDataService } from '../service/todo-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../service/authentication-service.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
   
   selectedLanguage = Constants.DEFAULT_LANGUAGE;
   constructor(
+    public authenticationService: AuthenticationService,
     public todoDataService: TodoDataService,
     private router: Router,
     private modalService: NgbModal){}
@@ -27,13 +29,9 @@ export class HeaderComponent implements OnInit {
     this.onLanguageChangeEvent.emit(language);
   }
 
-  checkIfLoggedIn(){
-    return this.todoDataService.checkIfLoggedIn();
-  }
-
   receiveMessage($event){
     console.log('logout modal sended an event on header')
-    this.todoDataService.onLogout();
+    this.authenticationService.logout();
     this.router.navigate(['']);
   }
 }

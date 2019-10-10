@@ -17,23 +17,39 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
    }
 
+   readonly APP_URL = 'http://localhost:8080/todo';
+
    public get currentUserValue(): User {
      return this.currentUserSubject.value;
    }
 
-   //TODO:CONFIGURE BACKEND URL FOR LOGIN POST METHOD
    login(username: string, password: string){
-     return this.http.post<any>('BACKEND URL HERE', { username, password })
+    console.log(this.isUserLoggedIn())
+     return this.http.post<any>(this.APP_URL + '/login', { username, password })
       .pipe(map(user=>{
-        if (user && user.token){
+        //if (user && user.token){
+        if (user){
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
+          console.log(this.isUserLoggedIn())
+          console.log("login done");
+         //console.log(this.currentUserSubject.value)
         }
-
+        console.log("login not done");
         return user;
-
       }));
+     
    }
+
+   isUserLoggedIn(){
+    let user = localStorage.getItem('currentUser');
+    console.log("check local storage", localStorage.getItem('currentUser'))
+    if (user == null){
+      return false;
+    } else {
+      return true;
+    }
+  }
 
    logout() {
     // remove user from local storage to log user out

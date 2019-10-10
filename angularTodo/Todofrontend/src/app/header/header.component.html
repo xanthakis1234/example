@@ -14,28 +14,20 @@
                                         >{{l.language}}
                                     </option>     
                             </select>        
-                        <!-- <button 
-                            class="btn btn-flat btn-lg" 
-                            *ngFor="let l of languageList" 
-                            (click)="useLanguage(l.iso)">{{l.language}}
-                        </button> -->
                     </div>
                 </div>
             </div>
     <div class = "row">
         <div class ="col text-center">
-            <a [routerLink]="!!todoDataService.checkIfLoggedIn() ? ['home'] : ['']">
+            <a [routerLink]="!authenticationService.isUserLoggedIn() ? ['home'] : ['']">
                 <img src="../../assets/download.png" height="200" width="200">
             </a>
         </div>
     </div>
-    <div class ="col" *ngIf="!!checkIfLoggedIn();">
+    <div class ="col" *ngIf="authenticationService.isUserLoggedIn();">
         <app-logout 
             (messageEvent)="receiveMessage($event)">
         </app-logout>
-        <!-- <div class="float-right">
-            <button class="btn btn-info" *ngIf="!!checkIfLoggedIn();">Logout</button>
-        </div> -->
     </div>
     <!-- <h1 class="text-danger text-center" routerLink=''>{{ 'application.title' | translate }}</h1> -->
     <br>

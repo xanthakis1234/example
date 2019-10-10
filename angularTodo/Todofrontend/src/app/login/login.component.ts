@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TodoDataService } from '../service/todo-data.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { AuthenticationService } from '../service/authentication-service.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -10,30 +11,49 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  profileForm = new FormGroup({
+  loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
   errorMessage = "Invalid Credentials";
   invalidLogin = false;
-  
+  submitted = false;
 
   constructor(private router: Router,
-    private todoDataService: TodoDataService) { }
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.authenticationService.logout();
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+  });
+  }
+
+  get controlls(){
+    return this.loginForm.controls;
   }
 
   onSubmit() {
-    if (this.profileForm.get('username').value == "nek" && 
-        this.profileForm.get('password').value == "1234"){
-          
-          this.invalidLogin = false;
-          this.router.navigate(['home'])
-          this.todoDataService.onLogIn();
-    } else {
+    this.submitted = true;
+    if (this.loginForm.invalid){
       this.invalidLogin = true;
-    }
+      console.log("invalid form")
+      return;
+    }else {
+      this.authenticationService.login(this.controlls.username.value, this.controlls.password.value)
+        .pipe(first())
+        .subscribe(
+            data=>{
+              this.router.navigate(['home'])
+              this.invalidLogin = false;
+              console.log("valid form")
+            },
+            error => {
+              //this.errorMessage = error;
+          });
+      }
  }
 
 }

@@ -6,14 +6,22 @@
     <div class="col">
       <div class="row">
         <div class="login-form">
-          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <h2 class="text-center">Login</h2>
             <div class="alert alert-danger" *ngIf='invalidLogin'>{{ errorMessage }}</div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Username" formControlName="username">
+              <input type="text" class="form-control" placeholder="Username" formControlName="username"
+                     [ngClass]="{ 'is-invalid': submitted && controlls.username.errors }">
+              <div *ngIf="submitted && !!controlls.password.errors" class="invalid-feedback">
+                <div *ngIf="!!controlls.username.errors.required">Username is required</div>
+              </div>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Password" formControlName="password">
+              <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                     [ngClass]="{ 'is-invalid': submitted && controlls.password.errors }">
+              <div *ngIf="submitted && !!controlls.password.errors" class="invalid-feedback">
+                <div *ngIf="!!controlls.password.errors.required">Password is required</div>
+            </div>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block">Log in</button>
