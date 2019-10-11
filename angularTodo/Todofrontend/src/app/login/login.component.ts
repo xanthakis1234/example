@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessage = "Invalid Credentials";
   invalidLogin = false;
   submitted = false;
+  error = '';
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
@@ -51,7 +52,8 @@ export class LoginComponent implements OnInit {
               console.log("valid form")
             },
             error => {
-              //this.errorMessage = error;
+              this.invalidLogin = true;
+              this.error = error;
           });
       }
  }

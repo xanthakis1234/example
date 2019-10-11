@@ -43,7 +43,7 @@ export class AuthenticationService {
 
    isUserLoggedIn(){
     let user = localStorage.getItem('currentUser');
-    console.log("check local storage", localStorage.getItem('currentUser'))
+    //console.log("check local storage", localStorage.getItem('currentUser'))
     if (user == null){
       return false;
     } else {
