@@ -2,11 +2,8 @@ package com.todo.controllers;
 
 import java.util.List;
 import java.util.Map;
-
-import javax.validation.Valid;
-
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.todo.dto.UserDTO;
 import com.todo.model.Task;
 import com.todo.model.User;
 import com.todo.services.TodoService;
@@ -37,21 +36,20 @@ public class TodoRestController {
 			userService.createUser(user);
 	}
 	
+	//TODO: if database found a user ok else throw 404 code
 	@PostMapping(path = "/todo/login")
-	public User login(@RequestBody String jsonString) {
+	public UserDTO login(@RequestBody String jsonString) {
 		JsonParser springParser = JsonParserFactory.getJsonParser();
 		Map<String, Object> map = springParser.parseMap(jsonString);
 		String username = (String) map.get("username");
 		String password = (String) map.get("password");
 		System.out.println(username + password);
 		User user = userService.getUserFromUsernameAndPassword(username, password);
-//		if (userService.getUserFromUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
-//			return true;
-//		}else {
-//			return false;
-//		}
 		
-		return user;
+		//DTO mapping
+		ModelMapper modelMapper = new ModelMapper();
+		UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+		return userDTO;
 	}
 	
 	@GetMapping(path = "todo/getTasks")
