@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.todo.dto.LoginDTO;
 import com.todo.dto.UserDTO;
 import com.todo.model.Task;
 import com.todo.model.User;
@@ -41,12 +42,15 @@ public class TodoRestController {
 	public UserDTO login(@RequestBody String jsonString) {
 		JsonParser springParser = JsonParserFactory.getJsonParser();
 		Map<String, Object> map = springParser.parseMap(jsonString);
-		String username = (String) map.get("username");
-		String password = (String) map.get("password");
-		System.out.println(username + password);
-		User user = userService.getUserFromUsernameAndPassword(username, password);
 		
-		//DTO mapping
+		//LoginDTO mapping
+		LoginDTO loginDTO = new LoginDTO();	
+		loginDTO.setUsername((String) map.get("username"));
+		loginDTO.setPassword((String) map.get("password"));
+		System.out.println(loginDTO.getUsername() + "  " + loginDTO.getPassword());
+		User user = userService.getUserFromUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
+		
+		//UserDTO mapping
 		ModelMapper modelMapper = new ModelMapper();
 		UserDTO userDTO = modelMapper.map(user, UserDTO.class);
 		return userDTO;
