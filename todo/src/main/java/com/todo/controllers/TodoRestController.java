@@ -6,6 +6,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,25 +39,27 @@ public class TodoRestController {
 			userService.createUser(user);
 	}
 	
-	//TODO: if database found a user ok else throw 404 code
+	
 	@PostMapping(path = "/todo/login")
-	public UserDTO login(@RequestBody String jsonString) {
+	public ResponseEntity<?> login(@RequestBody String jsonString){
+		
 		JsonParser springParser = JsonParserFactory.getJsonParser();
 		Map<String, Object> map = springParser.parseMap(jsonString);
-		
-		//LoginDTO mapping
 		LoginDTO loginDTO = new LoginDTO();	
 		loginDTO.setUsername((String) map.get("username"));
 		loginDTO.setPassword((String) map.get("password"));
-		System.out.println(loginDTO.getUsername() + "  " + loginDTO.getPassword());
+		System.out.println("Credentials : " + loginDTO.getUsername() + "  " + loginDTO.getPassword());
 		User user = userService.getUserFromUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
+		if (user != null) {
+			ModelMapper modelMapper = new ModelMapper();
+			UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+			return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
+		}else {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
 		
-		//UserDTO mapping
-		ModelMapper modelMapper = new ModelMapper();
-		UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-		return userDTO;
 	}
-	
+		
 	@GetMapping(path = "todo/getTasks")
 	public List<Task> getAllTasks() {
 		return service.getAll();
