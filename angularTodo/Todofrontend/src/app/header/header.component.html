@@ -19,7 +19,7 @@
             </div>
     <div class = "row">
         <div class ="col text-center">
-            <a [routerLink]="!authenticationService.isUserLoggedIn() ? ['home'] : ['']">
+            <a [routerLink]="!authenticationService.isUserLoggedIn() ? [''] : ['home']">
                 <img src="../../assets/download.png" height="200" width="200">
             </a>
         </div>
