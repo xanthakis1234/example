@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Map;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,33 +18,43 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.dto.LoginDTO;
 import com.todo.dto.UserDTO;
 import com.todo.model.Task;
 import com.todo.model.User;
+import com.todo.services.JwtTokenService;
 import com.todo.services.TodoService;
 import com.todo.services.UserService;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TodoRestController {
+	
 
 	@Autowired
 	private TodoService service;
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private JwtTokenService jwtTokenService;
 
 	@PostMapping(path = "/todo/register")
 	public void register(@RequestBody User user) {
 			userService.createUser(user);
 	}
 	
-	
-	@PostMapping(path = "/todo/login")
-	public ResponseEntity<?> login(@RequestBody String jsonString){
+	@PostMapping(path = "/todo/authenticate")
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody String jsonString){
 		
 		JsonParser springParser = JsonParserFactory.getJsonParser();
 		Map<String, Object> map = springParser.parseMap(jsonString);
@@ -53,12 +66,40 @@ public class TodoRestController {
 		if (user != null) {
 			ModelMapper modelMapper = new ModelMapper();
 			UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-			return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
+			final String token = jwtTokenService.generateToken(userDTO);
+//			HttpHeaders responseHeader = new HttpHeaders();
+//			responseHeader.set("Token", token);
+			return ResponseEntity.ok()
+					.header("access-control-expose-headers", "Token")
+					.header("Token", token)
+					.body(userDTO);
 		}else {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
 		
+		
 	}
+		
+//------------------------	BEFORE JWT ---------------------------------
+//	
+//	@PostMapping(path = "/todo/login")
+//	public ResponseEntity<?> login(@RequestBody String jsonString){
+//		JsonParser springParser = JsonParserFactory.getJsonParser();
+//		Map<String, Object> map = springParser.parseMap(jsonString);
+//		LoginDTO loginDTO = new LoginDTO();	
+//		loginDTO.setUsername((String) map.get("username"));
+//		loginDTO.setPassword((String) map.get("password"));
+//		System.out.println("Credentials : " + loginDTO.getUsername() + "  " + loginDTO.getPassword());
+//		User user = userService.getUserFromUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
+//		if (user != null) {
+//			ModelMapper modelMapper = new ModelMapper();
+//			UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+//			return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
+//		}else {
+//			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//		}
+//		
+//	}
 		
 	@GetMapping(path = "todo/getTasks")
 	public List<Task> getAllTasks() {
